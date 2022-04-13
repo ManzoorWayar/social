@@ -1,0 +1,103 @@
+.auth-card {
+  width: 75%;
+  min-height: 40vh;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
+  background-color: #ffffff;
+  padding: 20px !important;
+
+  .addon-icon {
+    color: $icon;
+    background-color: #ffffff !important;
+    cursor: pointer;
+  }
+
+  &.w-lg {
+    width: 100% !important;
+  }
+
+  &.justify-center {
+    position: relative;
+    top: 25%;
+    left: 20%;
+    padding-bottom: 10px !important;
+    min-height: 27vh;
+  }
+
+  &.justify-center .w-lg {
+    position: relative;
+    top: 10%;
+    left: 20%;
+    padding-bottom: 10px !important;
+    min-height: 27vh;
+  }
+
+  .auth-input {
+    height: 45px;
+    width: 80%;
+    border-radius: 9px;
+    padding: 0 10px;
+    padding-left: 10px;
+    outline: 0;
+    font-size: 13px;
+    position: relative;
+
+    &:focus {
+      outline: none !important;
+    }
+  }
+
+  .required-msg {
+    font-size: 12px;
+    padding-top: 5px;
+  }
+}
+
+.resize {
+  font-size: 14px;
+
+  &.focus {
+    font-size: 10px;
+    font-weight: bold;
+    color: $primary;
+    text-decoration: none !important;
+  }
+}
+
+// mobile
+@media only screen and (max-width: 768px) {
+  .auth-card {
+    width: 90%;
+    margin-top: 3rem !important;
+    margin-left: 1rem !important;
+
+    &.justify-center {
+      position: relative;
+      top: 30%;
+      left: 0%;
+      padding-bottom: 10px !important;
+      min-height: 27vh;
+    }
+  }
+}
+
+// Tablet
+@media only screen and (max-width: 600px) {
+  .auth-card {
+    width: 90%;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .auth-card {
+    position: relative;
+    top: 20%;
+    left: 25%;
+
+    &.justify-center {
+      padding-bottom: 10px !important;
+      min-height: 23vh;
+    }
+  }
+}

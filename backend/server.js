@@ -19,6 +19,7 @@ dotenv.config();
 connectDB();
 
 // Route files
+import userRoutes from "./routes/user.js";
 
 const app = express();
 
@@ -50,6 +51,7 @@ app.use(hpp());
 app.use(cors());
 
 // Mount routers
+app.use("/users", userRoutes);
 
 const __dirname = path.resolve();
 app.use(
