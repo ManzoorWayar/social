@@ -1,10 +1,10 @@
 import React from "react";
 import { LinkContainer } from "react-router-bootstrap";
 import { useNavigate } from "react-router-dom";
-import { Navbar, Nav, Container } from "react-bootstrap";
+import { Navbar, Nav, NavDropdown, Container, Image } from "react-bootstrap";
 import SearchBox from "./SearchBox";
 import { useDispatch, useSelector } from "react-redux";
-import { logout, authReset } from "../features/auth/authSlice";
+import { logout } from "../features/auth/authSlice";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -12,26 +12,40 @@ const Header = () => {
 
   const { userInfo } = useSelector((state) => state.auth);
 
+  const isAuth = userInfo && userInfo.token && userInfo.verifiedAt;
+
   const onLogout = () => {
     dispatch(logout());
-    dispatch(authReset());
     navigate("/login");
   };
 
   return (
     <header>
-      <Navbar bg="dark" variant="dark" expand="lg" collapseOnSelect>
+      <Navbar collapseOnSelect>
         <Container>
           <LinkContainer to="/">
-            <Navbar.Brand>Social</Navbar.Brand>
+            <>
+              <Image
+                src="logo.png"
+                className="rounded-circle mx-2"
+                width={25}
+                height={25}
+              />
+              <Navbar.Brand className="fw-bold">Social Name</Navbar.Brand>
+            </>
           </LinkContainer>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
-            <SearchBox />
-            <Nav className="mr-auto">
-              {userInfo && userInfo.token && userInfo.verifiedAt ? (
+            {isAuth && <SearchBox />}
+            <Nav className="ms-auto">
+              {isAuth ? (
                 <>
-                  <span className="text-info"> {userInfo?.firstName}</span>
+                  <Image
+                    src="profile.jpg"
+                    className="rounded-circle mx-2 border"
+                    width={40}
+                    height={40}
+                  />
 
                   <button className="btn" onClick={onLogout}>
                     Logout
@@ -39,15 +53,16 @@ const Header = () => {
                 </>
               ) : (
                 <>
-                  <LinkContainer to="login">
+                  <LinkContainer to="login" className="fw-bold">
                     <Nav.Link>
-                      <i className="fas fa-user"></i> Sign In
+                      <i className="fas fa-user text-info"></i> Sign In
                     </Nav.Link>
                   </LinkContainer>
 
-                  <LinkContainer to="register">
+                  <LinkContainer to="register" className="fw-bold">
                     <Nav.Link>
-                      <i className="fas fa-user"></i> Register
+                      <i className="fas fa-user text-info px-1"></i>
+                      Register
                     </Nav.Link>
                   </LinkContainer>
                 </>

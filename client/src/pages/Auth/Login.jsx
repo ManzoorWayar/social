@@ -28,14 +28,15 @@ const Login = () => {
 
   const [type, icon] = PasswordToggle();
 
-  const { isError, isSuccess, isLoading, authError, message } = useSelector(
-    (state) => state.auth
-  );
+  const { userInfo, isError, isSuccess, isLoading, authError, message } =
+    useSelector((state) => state.auth);
 
   // Server error-handler
   let error = errorHandler(authError);
 
   useEffect(() => {
+    if (userInfo) navigate("/");
+
     if (isError) {
       toast.error(error);
     }
@@ -46,7 +47,7 @@ const Login = () => {
     }
 
     dispatch(authReset());
-  }, [dispatch, navigate, isError, isSuccess, error, message]);
+  }, [dispatch, navigate, userInfo, isError, isSuccess, error, message]);
 
   const onSubmitHandler = (data) => {
     dispatch(userLogin(data)).then(() => (isError && !message) ?? reset());
@@ -59,6 +60,7 @@ const Login = () => {
       </Col>
       <Col xs={12} md={6} sm={12}>
         <div className="mt-5 ms-5 auth-card justify-top-center ">
+          <h3 className="text-primary text-center">Social Name</h3>
           <Form className="m-3" onSubmit={handleSubmit(onSubmitHandler)}>
             <Form.Group controlId="email">
               <Form.Label className="resize">Email</Form.Label>

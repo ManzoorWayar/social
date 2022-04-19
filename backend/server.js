@@ -54,10 +54,7 @@ app.use(cors());
 app.use("/users", userRoutes);
 
 const __dirname = path.resolve();
-app.use(
-  "/public/uploads",
-  express.static(path.join(__dirname, "/public/uploads"))
-);
+app.use("/uploads", express.static(path.join(__dirname, "/public/uploads")));
 
 // Error Handling Middlewares
 app.use(notFound);

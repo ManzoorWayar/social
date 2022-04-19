@@ -7,6 +7,9 @@
 body {
   font-family: "Poppins", sans-serif;
   background-color: $appColor;
+  // overflow-x: hidden;
+  text-decoration: none;
+  list-style: none;
 
   & main {
     min-height: 80vh;

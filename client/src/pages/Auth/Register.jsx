@@ -68,11 +68,11 @@ const Register = () => {
 
   return (
     <FormContainer>
-      <Col xs={6} md={6} className="d-none d-sm-block">
+      <Col xs={6} lg={5} className="d-none d-sm-block">
         <Image src={sideImage} fluid className="d-none d-lg-block mt-5" />
       </Col>
-      <Col xs={6} md={6} sm={12}>
-        <div className="mt-5 ms-3 auth-card w-lg d-sm">
+      <Col xs={6} lg={7} md={12} sm={12}>
+        <div className="mt-5 auth-card w-lg d-sm">
           <h2 className="text-center py-2">Sign Up</h2>
           <Form onSubmit={handleSubmit(onSubmitHandler)}>
             <Row>
@@ -218,7 +218,7 @@ const Register = () => {
                   <Form.Label className="resize">confirm-password</Form.Label>
                   <InputGroup>
                     <InputGroup.Text className="addon-icon">
-                      <i class="fa-solid fa-lock"></i>
+                      <i className="fa-solid fa-lock"></i>
                     </InputGroup.Text>
                     <Form.Control
                       type={type}

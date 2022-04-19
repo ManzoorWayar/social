@@ -59,7 +59,7 @@ const ResetPassword = () => {
       <Col xs={12} md={6} sm={12}>
         <div className="mt-5 ms-5 auth-card justify-center">
           <h4 className="text-primary text-center">
-            Change your Account Password
+            Change your socialName Account Password
           </h4>
           <Form className="mt-2" onSubmit={handleSubmit(onSubmitHandler)}>
             <Form.Group controlId="newPassword">

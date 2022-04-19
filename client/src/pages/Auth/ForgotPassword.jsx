@@ -51,7 +51,9 @@ const ForgotPassword = () => {
       </Col>
       <Col xs={12} md={6} sm={12}>
         <div className="mt-5 ms-5 auth-card justify-center">
-          <h4 className="text-primary text-center">Find Your Account</h4>
+          <h4 className="text-primary py-2 text-center">
+            Find Your SocialName Account
+          </h4>
           <Form className="mt-2" onSubmit={handleSubmit(onSubmitHandler)}>
             <Form.Group controlId="email">
               <Form.Label className="resize">Email</Form.Label>

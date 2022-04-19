@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Form, Button } from "react-bootstrap";
+import { Form, InputGroup, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
 const SearchBox = () => {
@@ -17,18 +17,20 @@ const SearchBox = () => {
   };
 
   return (
-    <Form className="d-flex" onSubmit={submitHandler}>
+    <Form className="search-bar" onSubmit={submitHandler}>
       <Form.Control
-        type="text"
+        type="search"
         name="q"
         onChange={(e) => setKeyword(e.target.value)}
-        placeholder="Search Products..."
+        placeholder="Search People, Articals ..."
         className="mr-sm-2 ml-sm-5"
         autoComplete="off"
       ></Form.Control>
-      <Button type="submit" variant="outline-success" className="p-2">
-        Search
-      </Button>
+      <InputGroup.Text className="nav-search-icon text-info">
+        <Button type="submit" className="p-0 m-0 nav-search-icon text-info">
+          <i className="fa fa-search"></i>
+        </Button>
+      </InputGroup.Text>
     </Form>
   );
 };
