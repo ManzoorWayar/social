@@ -31,6 +31,7 @@ const PostSchema = new mongoose.Schema(
         replyTo: {
           type: mongoose.Schema.Types.ObjectId,
           required: true,
+          default: null,
         },
       },
     ],

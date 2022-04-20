@@ -1,5 +1,7 @@
 import Router from "express-group-router";
 import postController from "../controllers/posts/post.js";
+import commentController from "../controllers/comment/comment.js";
+import replyController from "../controllers/comment/replyComment.js";
 import { authenticate } from "../middleware/authMiddleware.js";
 import imgUploader from "../utils/imgUploader.js";
 
@@ -11,6 +13,20 @@ router.group("/", [authenticate], (router) => {
   router.post("/", imgUploader.array("files", 8), postController.createPost);
   router.put("/:id", imgUploader.array("files", 8), postController.updatePost);
   router.delete("/:id", postController.deletePost);
+
+  // Comments
+  router.group("/:id/comment", (router) => {
+    router.post("/", commentController.createComment);
+    router.put("/:commentId", commentController.updateComment);
+    router.delete("/:commentId", commentController.deleteComment);
+
+    //Reply Comment
+    router.group("/:commentId", (router) => {
+      router.post("/reply", replyController.createReply);
+      router.put("/reply", replyController.updateReply);
+      router.delete("/reply", replyController.deleteReply);
+    });
+  });
 });
 
 export default router.init();

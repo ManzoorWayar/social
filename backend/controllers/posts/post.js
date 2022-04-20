@@ -4,10 +4,10 @@ import Post from "../../models/Post.js";
 // @desc      Get all posts
 // @route     GET /posts
 // @access    public
-const getPosts = asyncHandler(async (_, res, next) => {
+const getPosts = asyncHandler(async (req, res, next) => {
   const posts = await Post.find({ deletedAt: undefined })
-    .populate("user", "fullName media createdAt") // Post's Creator
-    .populate("comments.user", "fullName media createdAt");
+    .populate("user", "firstName lastName media createdAt") // Post's Creator
+    .populate("comments.user", "firstName lastName media createdAt");
 
   res.json({ length: posts.length, posts });
 });
@@ -17,8 +17,8 @@ const getPosts = asyncHandler(async (_, res, next) => {
 // @access    public
 const getPost = asyncHandler(async ({ params: { id } }, res, next) => {
   const post = await Post.findById(id)
-    .populate("user", "fullName media") // Post's Creator
-    .populate("comments.user", "fullName media");
+    .populate("user", "firstName lastName media") // Post's Creator
+    .populate("comments.user", "firstName lastName media");
 
   if (!post || post.deletedAt !== undefined) {
     res.status(400);
