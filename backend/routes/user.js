@@ -7,11 +7,7 @@ const router = new Router();
 
 router.group("/", (router) => {
   router.get("/", userController.getUsers);
-  router.put(
-    "/:id/friend-request",
-    [authenticate],
-    userController.friendRequest
-  );
+  router.put("/friend-request", [authenticate], userController.friendRequest);
 });
 
 export default router.init();

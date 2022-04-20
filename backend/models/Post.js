@@ -11,6 +11,12 @@ const PostSchema = new mongoose.Schema(
       type: Array,
       index: true,
     },
+    status: {
+      type: String,
+      enum: ["public", "friends"],
+      default: "public",
+      required: true,
+    },
     user: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
