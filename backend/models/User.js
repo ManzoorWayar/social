@@ -50,6 +50,14 @@ const UserSchema = new mongoose.Schema(
       default: "male",
       required: [true, "Please Select your gender"],
     },
+    followers: {
+      type: Array,
+      default: [],
+    },
+    followings: {
+      type: Array,
+      default: [],
+    },
     tokenIdentifier: {
       type: String,
       select: false,

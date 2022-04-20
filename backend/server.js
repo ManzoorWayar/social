@@ -19,6 +19,7 @@ dotenv.config();
 connectDB();
 
 // Route files
+import authRoutes from "./routes/auth.js";
 import userRoutes from "./routes/user.js";
 import postRoutes from "./routes/post.js";
 
@@ -52,6 +53,7 @@ app.use(hpp());
 app.use(cors());
 
 // Mount routers
+app.use("/auth", authRoutes);
 app.use("/users", userRoutes);
 app.use("/posts", postRoutes);
 
