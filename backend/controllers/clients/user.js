@@ -24,6 +24,10 @@ const getUser = asyncHandler(async ({ params: { id } }, res, next) => {
   res.json({ user });
 });
 
+// @desc      Get single user's all posts
+// @route     GET /users/:id
+// @access    private/admin
+
 // @desc    Create a user
 // @route   POST /user/register
 // @access  private
