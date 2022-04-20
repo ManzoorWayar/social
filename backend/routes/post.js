@@ -2,6 +2,7 @@ import Router from "express-group-router";
 import postController from "../controllers/posts/post.js";
 import commentController from "../controllers/comment/comment.js";
 import replyController from "../controllers/comment/replyComment.js";
+import likeController from "../controllers/like/like.js";
 import { authenticate } from "../middleware/authMiddleware.js";
 import imgUploader from "../utils/imgUploader.js";
 
@@ -27,6 +28,9 @@ router.group("/", [authenticate], (router) => {
       router.delete("/reply", replyController.deleteReply);
     });
   });
+
+  // Like & Dislke
+  router.put("/:id/like", [authenticate], likeController.likeAndDislike);
 });
 
 export default router.init();
