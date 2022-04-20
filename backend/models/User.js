@@ -8,16 +8,19 @@ const UserSchema = new mongoose.Schema(
     firstName: {
       type: String,
       required: [true, "Please add your firstName"],
+      trim: true,
     },
     lastName: {
       type: String,
       required: [true, "Please add your lastName"],
+      trim: true,
     },
     email: {
       type: String,
       index: {
         unique: true,
       },
+      trim: true,
       match: [
         /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
         "Please add a valid email",
@@ -37,7 +40,7 @@ const UserSchema = new mongoose.Schema(
       type: Date,
       required: [true, "Please add your birthday"],
     },
-    image: {
+    media: {
       type: String,
       default: "no-photo.jpg",
     },
@@ -57,13 +60,16 @@ const UserSchema = new mongoose.Schema(
     resetPasswordExpire: Date,
     deletedAt: {
       type: Date,
-      default: null,
     },
   },
   {
     timestamps: true,
   }
 );
+
+UserSchema.virtual("fullName").get(function () {
+  return this.firstName + this.lastName;
+});
 
 // Encrypt password using bcrypt
 UserSchema.pre("save", async function (next) {

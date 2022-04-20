@@ -20,6 +20,7 @@ connectDB();
 
 // Route files
 import userRoutes from "./routes/user.js";
+import postRoutes from "./routes/post.js";
 
 const app = express();
 
@@ -52,6 +53,7 @@ app.use(cors());
 
 // Mount routers
 app.use("/users", userRoutes);
+app.use("/posts", postRoutes);
 
 const __dirname = path.resolve();
 app.use("/uploads", express.static(path.join(__dirname, "/public/uploads")));
