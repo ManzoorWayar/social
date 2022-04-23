@@ -14,7 +14,7 @@ import {
   Spinner,
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import FormContainer from "../../components/small/FormContainer";
+import CardContainer from "../../components/small/CardContainer";
 import Schema from "../../utils/validationSchema";
 import errorHandler from "../../utils/errorHandler";
 import { userRegister, authReset } from "../../features/auth/authSlice";
@@ -67,7 +67,7 @@ const Register = () => {
   };
 
   return (
-    <FormContainer>
+    <CardContainer>
       <Col xs={6} lg={5} className="d-none d-sm-block">
         <Image src={sideImage} fluid className="d-none d-lg-block mt-5" />
       </Col>
@@ -269,7 +269,7 @@ const Register = () => {
           </Form>
         </div>
       </Col>
-    </FormContainer>
+    </CardContainer>
   );
 };
 

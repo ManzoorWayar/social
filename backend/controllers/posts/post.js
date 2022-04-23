@@ -1,15 +1,31 @@
 import asyncHandler from "express-async-handler";
 import Post from "../../models/Post.js";
+import User from "../../models/User.js";
 
-// @desc      Get all posts
+// @desc      Get all timeline posts
 // @route     GET /posts
 // @access    public
-const getPosts = asyncHandler(async (req, res, next) => {
-  const posts = await Post.find({ deletedAt: undefined })
-    .populate("user", "firstName lastName media createdAt") // Post's Creator
+const getPosts = asyncHandler(async ({ user }, res, next) => {
+  const userPosts = await Post.find({ user: user._id, deletedAt: undefined })
+    .populate("user", "firstName lastName media createdAt")
     .populate("comments.user", "firstName lastName media createdAt");
 
-  res.json({ length: posts.length, posts });
+  const friendPosts = await Promise.all(
+    user.followings.map((friendId) => {
+      return Post.find({ user: friendId, deletedAt: undefined })
+        .populate("user", "firstName lastName media createdAt")
+        .populate("comments.user", "firstName lastName media createdAt");
+    })
+  );
+
+  const posts = userPosts.concat(...friendPosts);
+
+  // const posts = await Post.aggregate([]);
+
+  res.status(200).json({
+    length: posts?.length,
+    posts,
+  });
 });
 
 // @desc      Get single post

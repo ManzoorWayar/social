@@ -57,6 +57,11 @@ const PostSchema = new mongoose.Schema(
   }
 );
 
+// Static method to get avg rating and save
+PostSchema.statics.getTimelines = async function (bootcampId) {
+  const obj = await this.aggregate([]);
+};
+
 const Post = mongoose.model("Post", PostSchema);
 
 export default Post;

@@ -6,7 +6,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Form, InputGroup, Button, Col, Image, Spinner } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import FormContainer from "../../components/small/FormContainer";
+import CardContainer from "../../components/small/CardContainer";
 import Schema from "../../utils/validationSchema";
 import errorHandler from "../../utils/errorHandler";
 import sideImage from "../../core/images/login.svg";
@@ -54,7 +54,7 @@ const Login = () => {
   };
 
   return (
-    <FormContainer>
+    <CardContainer>
       <Col xs={6} md={6}>
         <Image src={sideImage} fluid className="d-none d-lg-block mt-5" />
       </Col>
@@ -132,7 +132,7 @@ const Login = () => {
           </Form>
         </div>
       </Col>
-    </FormContainer>
+    </CardContainer>
   );
 };
 

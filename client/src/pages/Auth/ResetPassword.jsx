@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { useNavigate, useParams } from "react-router-dom";
 import { InputGroup, Form, Image, Button, Col, Spinner } from "react-bootstrap";
-import FormContainer from "../../components/small/FormContainer";
+import CardContainer from "../../components/small/CardContainer";
 import sideImage from "../../core/images/login.svg";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -52,7 +52,7 @@ const ResetPassword = () => {
   };
 
   return (
-    <FormContainer>
+    <CardContainer>
       <Col xs={6} md={6}>
         <Image src={sideImage} fluid className="d-none d-lg-block mt-5" />
       </Col>
@@ -119,7 +119,7 @@ const ResetPassword = () => {
           </Form>
         </div>
       </Col>
-    </FormContainer>
+    </CardContainer>
   );
 };
 
