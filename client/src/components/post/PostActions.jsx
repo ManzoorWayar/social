@@ -1,6 +1,6 @@
 import React from "react";
 
-const Three = () => {
+const PostActions = () => {
   return (
     <section>
       <div className="pt-3 pb-2">
@@ -23,4 +23,4 @@ const Three = () => {
   );
 };
 
-export default Three;
+export default PostActions;

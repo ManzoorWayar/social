@@ -1,0 +1,44 @@
+.fieldInput {
+  width: 100%;
+  position: relative;
+  //   box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.09);
+  border-radius: 30px;
+  overflow: hidden;
+
+  .comment-input {
+    width: 100%;
+    background: rgba(226, 230, 238, 0.59);
+    border: none;
+    padding: 12px 20px;
+    font-size: 12px;
+    &:focus {
+      outline: none;
+    }
+  }
+  .form-submit {
+    font-size: 12px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 50px;
+    height: 46px;
+    border: none;
+    background: none;
+    box-shadow: 5px -2px 81px 1px rgba(0, 0, 0, 0.09);
+    cursor: pointer;
+  }
+}
+
+.comment-text {
+  font-size: 0.9rem;
+}
+
+.show-comment {
+  // background: rgba(226, 230, 238, 0.59);
+  border-radius: 35px;
+}
+
+.replies {
+  margin-top: 10px;
+  margin-left: 30px;
+}

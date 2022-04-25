@@ -41,7 +41,7 @@ const Header = () => {
               {isAuth ? (
                 <>
                   <Image
-                    src="profile.jpg"
+                    src={`uploads/${userInfo.image}`}
                     className="rounded-circle mx-2 border"
                     width={40}
                     height={40}

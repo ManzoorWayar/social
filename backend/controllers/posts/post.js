@@ -6,15 +6,19 @@ import User from "../../models/User.js";
 // @route     GET /posts
 // @access    public
 const getPosts = asyncHandler(async ({ user }, res, next) => {
-  const userPosts = await Post.find({ user: user._id, deletedAt: undefined })
-    .populate("user", "firstName lastName media createdAt")
-    .populate("comments.user", "firstName lastName media createdAt");
+  const userPosts = await Post.find({
+    user: user._id,
+    deletedAt: undefined,
+  }).populate("user", "firstName lastName image createdAt");
+  // .populate("comments.user", "firstName lastName media createdAt");
 
   const friendPosts = await Promise.all(
     user.followings.map((friendId) => {
-      return Post.find({ user: friendId, deletedAt: undefined })
-        .populate("user", "firstName lastName media createdAt")
-        .populate("comments.user", "firstName lastName media createdAt");
+      return Post.find({ user: friendId, deletedAt: undefined }).populate(
+        "user",
+        "firstName lastName image createdAt"
+      );
+      // .populate("comments.user", "firstName lastName media createdAt");
     })
   );
 

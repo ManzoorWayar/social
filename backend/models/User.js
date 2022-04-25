@@ -40,7 +40,7 @@ const UserSchema = new mongoose.Schema(
       type: Date,
       required: [true, "Please add your birthday"],
     },
-    media: {
+    image: {
       type: String,
       default: "no-photo.jpg",
     },

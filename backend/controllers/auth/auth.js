@@ -20,7 +20,7 @@ const register = asyncHandler(async (req, res) => {
     firstName,
     email,
     ...rest,
-    image: "no-image.png",
+    image: null,
     verifiedAt: undefined,
     birthday: new Date(year, month, day),
   });
